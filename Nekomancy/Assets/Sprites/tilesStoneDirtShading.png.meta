@@ -1,19 +1,37 @@
 fileFormatVersion: 2
-guid: 1302fff7f690d0142a8524986f9221f1
+guid: cd1365197eafbd2459d17030ba406dfa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4257500611772449373
-    second: tilemapGrassStone_0
+      213: -3167890529486861000
+    second: tilesStoneDirtShading_0
   - first:
-      213: -6493750946783087386
-    second: tilemapGrassStone_1
+      213: -4135241575826063121
+    second: tilesStoneDirtShading_1
   - first:
-      213: -5872067847629590660
-    second: tilemapGrassStone_2
+      213: 873648974425246486
+    second: tilesStoneDirtShading_2
   - first:
-      213: -1443420245285800925
-    second: tilemapGrassStone_3
+      213: -3894459973598043869
+    second: tilesStoneDirtShading_3
+  - first:
+      213: -4295984728411090810
+    second: tilesStoneDirtShading_4
+  - first:
+      213: -7274572330668130565
+    second: tilesStoneDirtShading_5
+  - first:
+      213: 1797480124769860790
+    second: tilesStoneDirtShading_6
+  - first:
+      213: -603816561296305320
+    second: tilesStoneDirtShading_7
+  - first:
+      213: -2451096989569820105
+    second: tilesStoneDirtShading_8
+  - first:
+      213: -620908881626687068
+    second: tilesStoneDirtShading_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -134,7 +152,112 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tilemapGrassStone_0
+      name: tilesStoneDirtShading_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a20dbff1be07cd44fbac11c936bd846f
+      internalID: -3167890529486861000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b056a914ed1f74fa347c0775a0e5b8
+      internalID: -4135241575826063121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abe8da74b9d49c94a80827fbd8647534
+      internalID: 873648974425246486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9020eab6ad56fdf4d88f62777d1f01b2
+      internalID: -3894459973598043869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba14adb80a09c7942a0e19eb18c115c2
+      internalID: -4295984728411090810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_5
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd59612444e41c04688b5badee73fd7d
-      internalID: 4257500611772449373
+      spriteID: 6d395e98f2ea3f941a0df59a8d061cd5
+      internalID: -7274572330668130565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilemapGrassStone_1
+      name: tilesStoneDirtShading_6
       rect:
         serializedVersion: 2
         x: 16
@@ -169,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db699fea6ac410c4a8af4fa4e7b891e3
-      internalID: -6493750946783087386
+      spriteID: 358eaeabb4168684894b370d69dfbc07
+      internalID: 1797480124769860790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilemapGrassStone_2
+      name: tilesStoneDirtShading_7
       rect:
         serializedVersion: 2
         x: 32
@@ -190,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d07b0a1a811d294e90b7ab8cf25ee42
-      internalID: -5872067847629590660
+      spriteID: b66c4af6104fd274fb38adc60ddf3391
+      internalID: -603816561296305320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tilemapGrassStone_3
+      name: tilesStoneDirtShading_8
       rect:
         serializedVersion: 2
         x: 48
@@ -211,8 +334,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6023e8b6f06cc2f4fa7fef18d96a6281
-      internalID: -1443420245285800925
+      spriteID: 29b3cd9e2dd75bf4f926bd03f6718067
+      internalID: -2451096989569820105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tilesStoneDirtShading_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89783d2ccc9cb2748af6a57ff4c04343
+      internalID: -620908881626687068
       vertices: []
       indices: 
       edges: []
