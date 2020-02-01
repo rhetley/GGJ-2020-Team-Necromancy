@@ -10,6 +10,8 @@ public class Throwing : MonoBehaviour
         charging
     }
     public GameObject playerGO;
+    public GameObject crystalGO;
+    public RopeSpawn ropeSpawn;
 
     [Header("Charge")]
     public bool chargeUp = true;
@@ -45,6 +47,7 @@ public class Throwing : MonoBehaviour
 
     [Header("Firing")]
     public Vector3 firingAngle;
+    public float firingPower;
 
     public ThrowingState throwingState;
     // Start is called before the first frame update
@@ -56,7 +59,11 @@ public class Throwing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (throwingState == ThrowingState.idle && Input.GetMouseButtonDown(0))
+        if(throwingState == ThrowingState.idle && Input.GetMouseButtonDown(1))
+        {
+            ropeSpawn.Reset();
+        }
+        else if (throwingState == ThrowingState.idle && Input.GetMouseButtonDown(0))
         {
             // Charging logic
             firingAngle = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - playerGO.transform.position);
@@ -87,9 +94,9 @@ public class Throwing : MonoBehaviour
     {
         Debug.Log("FIRE         Charge:" + currentCharge);
 
+        crystalGO.GetComponent<Rigidbody2D>().AddForce(new Vector2(firingAngle.x * firingPower, firingAngle.y * firingPower) * CurrentCharge);
 
-        currentCharge = 0f;
-        chargeUp = true;
+        CurrentCharge = -1f;
         throwingState = ThrowingState.idle;
 
 

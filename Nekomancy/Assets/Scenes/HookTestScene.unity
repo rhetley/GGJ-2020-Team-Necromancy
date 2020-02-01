@@ -340,7 +340,12 @@ PrefabInstance:
     - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -3933125188953873029, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
@@ -564,7 +569,7 @@ MonoBehaviour:
   partPrefab: {fileID: 1881170948578194962, guid: 083a7566a1bcf654eaee4d2b07f6f978,
     type: 3}
   parentObject: {fileID: 1334608063}
-  partDistance: 0.25
+  partDistance: 0.3
   reset: 0
   spawn: 0
   spawnPart: 0
@@ -574,7 +579,7 @@ MonoBehaviour:
   lastPart: {fileID: 0}
   weightGO: {fileID: 1426679182}
   currentCount: 0
-  allowedDistancePerPart: 0.22
+  allowedDistancePerPart: 0.4
   PIVOT_TO_CRYSTAL: 0
   ALLOWEDDISTANCE_COUNT: 0
 --- !u!50 &1334608066
@@ -770,11 +775,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGO: {fileID: 1419828618}
+  crystalGO: {fileID: 1426679182}
+  ropeSpawn: {fileID: 1334608065}
   chargeUp: 1
   chargeRate: 0.5
   chargeMax: 2
   currentCharge: 0
   firingAngle: {x: 0, y: 0, z: 0}
+  firingPower: 20000
   throwingState: 0
 --- !u!1 &1426679182 stripped
 GameObject:
