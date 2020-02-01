@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizInput: {x: 0, y: 0}
-  maxGroundAcceleration: 5000
+  maxGroundAcceleration: 1000
   maxGroundSpeed: 2
   jumpForce: 200
 --- !u!61 &1419828620
@@ -465,6 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3686e46313c21147b0a0f12f93a820b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToTeather: 0
+  minPullDistance: 2
+  swinging: 0
+  pulling: 0
 --- !u!1 &1766508437
 GameObject:
   m_ObjectHideFlags: 0

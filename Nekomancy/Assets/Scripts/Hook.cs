@@ -9,12 +9,15 @@ public class Hook : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
-    private float distanceToTeather;
+    [SerializeField]
+    private float distanceToTeather, minPullDistance;
+
     private Vector2 teatherBase;
     private Stack<Vector2> tPoints;
     private Stack<Vector2> tPointPerps;
 
-    private bool swinging = false;
+    [SerializeField]
+    private bool swinging = false, pulling = false;
 
     public bool Swinging
     { get { return swinging; } }
@@ -32,13 +35,29 @@ public class Hook : MonoBehaviour
     {
         if (swinging)
         {
+            //Do Input test if Swining
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                pulling = !pulling;
+
+            }
 
             Debug.DrawLine(transform.position, tPoints.Peek());
-            //Swing in circular motion by keeping velocity tangent to the teather
             Vector2 toTeather = tPoints.Peek() - (Vector2)transform.position;
             Vector2 teatherPerp = Vector2.Perpendicular(toTeather).normalized;
-            rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;            
+            //Swing in circular motion by keeping velocity tangent to the teather
+            rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;
             transform.position = tPoints.Peek() - toTeather.normalized * distanceToTeather;
+
+            if (pulling)
+            {
+                distanceToTeather = Mathf.Lerp(distanceToTeather, 0, Time.deltaTime);
+                if (tPoints.Count > 1 &&  minPullDistance > Vector2.Distance(tPoints.Peek(), new Vector2(transform.position.x, transform.position.y)) )
+                {
+                    Unteather();
+                }
+            }
+
 
             //Check for object wrapping
             playerCollider.enabled = !playerCollider.enabled;
@@ -50,10 +69,10 @@ public class Hook : MonoBehaviour
             }
 
             //check for object unwrapping
-            if (tPointPerps.Count != 0)
+            if (tPointPerps.Count != 0 && !pulling)
             {
                 Debug.DrawLine(tPointPerps.Peek(), tPoints.Peek());
-                if (Vector2.Dot(toTeather, tPointPerps.Peek()) >  0)
+                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0)
                 {
                     Unteather();
                 }
