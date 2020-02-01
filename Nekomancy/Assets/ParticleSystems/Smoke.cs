@@ -15,7 +15,7 @@ public class Smoke : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
     private void LateUpdate()
     {

@@ -5008,7 +5008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokeSystem: {fileID: 428270779}
-  WindVelocity: {x: 1, y: 1, z: 0}
+  WindVelocity: {x: 0.5, y: 0, z: 1}
 --- !u!4 &528341982
 Transform:
   m_ObjectHideFlags: 0
