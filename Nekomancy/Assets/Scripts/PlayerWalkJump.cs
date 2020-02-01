@@ -22,13 +22,21 @@ public class PlayerWalkJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && groundChecker.CheckIfGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && groundChecker.isGrounded)
         {
             Jump();
         }
         else
         {
             velocity.x = Input.GetAxis("Horizontal");
+            if (groundChecker.isAgainstRight && velocity.x > 0)
+            {
+                velocity.x = 0;
+            }
+            else if (groundChecker.isAgainstLeft && velocity.x < 0)
+            {
+                velocity.x = 0;
+            }
         }
     }
 
