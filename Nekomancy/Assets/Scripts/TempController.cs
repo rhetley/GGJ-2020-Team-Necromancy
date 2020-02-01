@@ -25,7 +25,7 @@ public class TempController : MonoBehaviour
 
     //player movement feilds
     [SerializeField]
-    private float maxGroundAcceleration = 5000;
+    private float maxGroundAcceleration = 10;
     [SerializeField]
     private float maxGroundSpeed = 2;
     [SerializeField]

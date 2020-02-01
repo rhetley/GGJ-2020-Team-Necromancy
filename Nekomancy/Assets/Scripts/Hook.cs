@@ -10,6 +10,7 @@ public class Hook : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     private float distanceToTeather;
+    private Vector2 teatherBase;
     private Stack<Vector2> tPoints;
     private Stack<Vector2> tPointPerps;
 
@@ -36,7 +37,7 @@ public class Hook : MonoBehaviour
             //Swing in circular motion by keeping velocity tangent to the teather
             Vector2 toTeather = tPoints.Peek() - (Vector2)transform.position;
             Vector2 teatherPerp = Vector2.Perpendicular(toTeather).normalized;
-            rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;
+            rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;            
             transform.position = tPoints.Peek() - toTeather.normalized * distanceToTeather;
 
             //Check for object wrapping
@@ -82,13 +83,17 @@ public class Hook : MonoBehaviour
         if (tPoints.Count > 1)
         {
             Vector2 current = tPoints.Pop();
-            if ((tPoints.Peek() - location).magnitude < .25f)
+            if ((tPoints.Peek() - location).magnitude < .3f)
             {
                 tPoints.Push(current);
                 Unteather();
                 return;
             }
             tPoints.Push(current);
+        }
+        else
+        {
+            teatherBase = location;
         }
 
         if (tPoints.Count > 0)
