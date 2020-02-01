@@ -65,6 +65,19 @@ public class GroundCheck : MonoBehaviour
         isAgainstLeft = playerCollider2D.GetContacts(leftContactFilter, contactPoints) > 0;
     }
 
+    /*void OnCollisionEnter2D(Collision2D theCollision)
+    {
+        if(theCollision.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Debug.Log("Detected ground");
+        }
+        else if (theCollision.collider.gameObject.layer == LayerMask.NameToLayer("Grappleable"))
+        {
+            Debug.Log("YOU CAN GRAPPLE THIS WOOOOOOOOO");
+        }
+
+    }*/
+
     /*public bool CheckIfGrounded()
     {
         RaycastHit2D[] hits;
