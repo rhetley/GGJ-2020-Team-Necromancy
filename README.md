@@ -12,3 +12,5 @@ Jack Levitt
 Luna Meier  
 Matthew Sissom  
 Kippy Tidwell
+Kimberly Goewey
+Andrew Brook
