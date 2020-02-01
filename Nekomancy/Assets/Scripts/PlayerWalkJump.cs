@@ -18,7 +18,7 @@ public class PlayerWalkJump : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         groundChecker = GetComponent<GroundCheck>();
 
-        Physics2D.gravity = new Vector2(0.0f, -98.0f);
+        Physics2D.gravity = new Vector2(0.0f, -73.5f);
     }
 
     // Update is called once per frame
