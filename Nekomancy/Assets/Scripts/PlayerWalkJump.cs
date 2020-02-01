@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerWalkJump : MonoBehaviour
 {
-    public Vector2 velocity;
+    private Vector2 velocity;
     float moveMultiplier = 10.0f;
     float jumpHeight = 5.0f;
     Rigidbody2D playerRigidbody;
     private GroundCheck groundChecker;
+
+    public CameraSwitcher cameraOverlord;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,7 @@ public class PlayerWalkJump : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         groundChecker = GetComponent<GroundCheck>();
 
-        Physics2D.gravity = new Vector2(0.0f, -98.0f);
+        Physics2D.gravity = new Vector2(0.0f, -73.5f);
     }
 
     // Update is called once per frame
@@ -37,6 +39,38 @@ public class PlayerWalkJump : MonoBehaviour
             {
                 velocity.x = 0;
             }
+
+            /*if (Mathf.Abs(velocity.x) > 0 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.Default)
+            {
+                cameraOverlord.SwitchToRunCamera();
+            }
+            else if (Mathf.Abs(velocity.x) == 0 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.Run)
+            {
+                cameraOverlord.SwitchToDefaultCamera();
+            }*/
+
+            /*if (Mathf.Abs(velocity.x) > .1 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.Default)
+            {
+                // This sets the activeCamera to "TransitionToRun," later to be simply the run camera
+                cameraOverlord.SwitchToRunCamera();
+            }
+            else if (Mathf.Abs(velocity.x) > .9 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.TransitionToRun)
+            {
+                // Transition is over, so the camera can now change again if the player needs
+                cameraOverlord.activeCamera = (int)CameraSwitcher.CameraState.Run;
+            }
+            else if (Mathf.Abs(velocity.x) < .9 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.Run)
+            {
+                // This sets the activeCamera to "TransitionToDefault," later to be simply the default camera
+                cameraOverlord.SwitchToDefaultCamera();
+            }
+            else if (Mathf.Abs(velocity.x) < .1 && cameraOverlord.activeCamera == (int)CameraSwitcher.CameraState.TransitionToDefault)
+            {
+                // Transition is over, so the camera can now change again if the player needs
+                cameraOverlord.activeCamera = (int)CameraSwitcher.CameraState.Default;
+            }*/
+
+
         }
     }
 
