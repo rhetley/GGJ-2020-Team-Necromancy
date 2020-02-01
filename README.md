@@ -8,6 +8,7 @@ Kevin Bolton
 Mara Gilmartin  
 Richard S. Hetley  
 Jason Kulp  
+Jack Levitt  
 Luna Meier  
 Matthew Sissom  
 Kippy Tidwell
