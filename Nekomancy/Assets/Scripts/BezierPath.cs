@@ -24,16 +24,20 @@ public class BezierPath
         Vector2 BezierPosition = Vector2.zero;
         for (int i = 0; i < path.Length; i++)
         {
-            BezierPosition += Combinations(path.Length - 1, i) * Mathf.Pow(1 - t, path.Length - 1 - i) * Mathf.Pow(t, i) * path[i];
+            int combo = Combinations(path.Length - 1, i);
+            float bound1 = Mathf.Pow(1 - t, path.Length - 1 - i);
+            float bound2 = Mathf.Pow(t, i);
+            Vector2 addition = combo * bound1 * bound2 * path[i];
+            BezierPosition += addition;
         }
         return BezierPosition;
     }
 
-    public int Combinations(int n, int k)
+    public static int Combinations(int n, int k)
     {
         if (k == 0 || n == k)
         {
-            return 0;
+            return 1;
         }
         else
         {
