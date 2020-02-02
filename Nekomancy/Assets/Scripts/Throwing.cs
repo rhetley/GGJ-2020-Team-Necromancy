@@ -19,6 +19,8 @@ public class Throwing : MonoBehaviour
     public float chargeMax = 4f;
     [SerializeField]
     private float currentCharge;
+    [SerializeField]
+    private OnCollisionStuff crystalCollision;
 
     public float CurrentCharge
     {
@@ -98,6 +100,7 @@ public class Throwing : MonoBehaviour
 
         CurrentCharge = -1f;
         throwingState = ThrowingState.idle;
+        crystalCollision.enabled = true;
 
 
     }
