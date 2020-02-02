@@ -1,0 +1,81 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UpdatedCatController : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject locationToSeek;
+    [SerializeField]
+    private int stopRadius;
+
+    private Vector2 distanceVector;
+    private float percentToRadius;
+    private Vector2 locationOnRadius;
+    private bool inStopZone;
+    private Rigidbody2D catRigidbody;
+    private SpriteRenderer catSprite;
+
+    private bool facingRight;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        catRigidbody = GetComponent<Rigidbody2D>();
+        catSprite = GetComponent<SpriteRenderer>();
+        inStopZone = false;
+        facingRight = true;
+    }
+
+    void FixedUpdate()
+    {
+        if (!inStopZone)
+        {
+            distanceVector = locationToSeek.transform.position - transform.position;
+            if (distanceVector.magnitude <= stopRadius)
+            {
+                inStopZone = true;
+                StartCoroutine(Hover());
+            }
+            else
+            {
+                percentToRadius = distanceVector.magnitude - stopRadius;
+                locationOnRadius = Vector2.Lerp(transform.position, locationToSeek.transform.position, percentToRadius);
+                catRigidbody.MovePosition(Vector2.Lerp(transform.position, locationOnRadius, 0.025f));
+                Debug.Log("Distance vector " + distanceVector + " Distance " + distanceVector.magnitude + " radius " + stopRadius + " percent " + percentToRadius);
+
+                if (distanceVector[0] > 0)
+                {
+                    catSprite.flipX = false;
+                }
+                else if (distanceVector[0] < 0)
+                {
+                    catSprite.flipX = true;
+                }
+            }
+        }
+        else
+        {
+            distanceVector = locationToSeek.transform.position - transform.position;
+            if (distanceVector.magnitude > stopRadius * 1.5)
+            {
+                inStopZone = false;
+                StopCoroutine(Hover());
+            }
+        }
+    }
+
+    private IEnumerator Hover()
+    {
+        WaitForFixedUpdate wait = new WaitForFixedUpdate();
+        float hoverDeltaTime = 0;
+        Vector2 shakeVector = Vector2.right * (Random.Range(0, 2) == 1 ? 1 : -1);
+
+        while (true)
+        {
+            catRigidbody.MovePosition(locationOnRadius + (Vector2.up * 0.15f * Mathf.Sin(hoverDeltaTime)) + (shakeVector * 0.1f * Mathf.Sin(hoverDeltaTime * 0.37f)));
+            yield return wait;
+            hoverDeltaTime += Time.deltaTime;
+        }
+    }
+}
