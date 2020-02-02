@@ -8,6 +8,7 @@ public class AnimateIsMoving : MonoBehaviour
     private Animator animator;
     private bool prevState = false;
     private int IsMovingHash;
+    private SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class AnimateIsMoving : MonoBehaviour
         parentBody = this.GetComponentInParent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         IsMovingHash = Animator.StringToHash("IsMoving");
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,15 @@ public class AnimateIsMoving : MonoBehaviour
                 prevState = false;
                 animator.SetBool(IsMovingHash, prevState);
             }
+        }
+
+        if (parentBody.velocity.x > 0.1f)
+        {
+            sprite.flipX = false;
+        }
+        else if (parentBody.velocity.x < -0.1f)
+        {
+            sprite.flipX = true;
         }
     }
 }
