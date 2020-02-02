@@ -110,39 +110,19 @@ public class Hook : MonoBehaviour
         else
         {
             swinging = true;
+            List<Vector2> points = new List<Vector2>
+            {
+                new Vector2(1.1f,1.1f),
+                new Vector2(1.1f,-1.1f)
+            };
+            RaycastHit2D hit = Physics2D.Raycast(location, transform.position, (location - (Vector2)transform.position).magnitude);
+            if (hit.collider != null)
+            {
+                Collider2D boxCol = hit.collider;
+                Vector2 inbetweenPoint = (Vector2)boxCol.transform.position + new Vector2(boxCol.bounds.extents.x * Mathf.Sign(location.x) + 1, boxCol.bounds.extents.y + 1);
+                tPoints.Push(inbetweenPoint);
+            }
             tPoints.Push(location);
-            //List<Vector2> points = new List<Vector2>
-            //{
-            //    new Vector2(1.1f,1.1f),
-            //    new Vector2(1.1f,-1.1f),
-            //    new Vector2(1.1f,-1.1f),
-            //    new Vector2(-1.1f,-1.1f)
-            //};
-            //bool colliding = true;
-            //RaycastHit2D hit;
-            //Vector2 center;
-            //Vector2 extents;
-            //float distance;
-            //while (colliding)
-            //{
-            //    hit = Physics2D.Raycast(tPoints.Peek(), transform.position, (tPoints.Peek()-(Vector2)transform.position).magnitude);
-            //    if(hit.collider == null)
-            //    {
-            //        colliding = false;
-            //    }
-            //    else
-            //    {
-            //        center = hit.collider.bounds.center;
-            //        extents = hit.collider.bounds.extents;
-            //        foreach(Vector2 p in points)
-            //        {
-            //            if(Physics2D.Raycast(tPoints.Peek(), new Vector2(center.x+extents.x*p.x, center.y+ extents.y * p.y)).collider == null)
-            //            {
-
-            //            }
-            //        }
-            //    }
-            //}
             teatherBase = location;
         }
 
