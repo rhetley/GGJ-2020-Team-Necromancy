@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
+    //The Hit Position of the Projectile logged to the hook
+    public Vector2 InitialHookTeather;
+
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
@@ -86,18 +89,22 @@ public class Hook : MonoBehaviour
         //TEMP use mouse to teather anywhere
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (swinging)
-            {
-                swinging = false;
-                Clear();
-            }
-            else
-            {
-                //TEMP teather at the mouse position
-                Teather(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                swinging = true;
-            }
+            Projectile.CreateProjectile2D<BoxCollider2D>(this.gameObject, this.transform.position, 20*(Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position));
         }
+
+    }
+
+    public void TeatherToHitPoint()
+    {
+        if (swinging)
+        {
+            Clear();
+        }
+
+        //TEMP teather at the mouse position
+        Teather(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        swinging = true;
+
     }
 
     void Teather(Vector2 location)

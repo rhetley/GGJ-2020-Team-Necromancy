@@ -10451,6 +10451,7 @@ GameObject:
   - component: {fileID: 1158689591}
   - component: {fileID: 1158689592}
   - component: {fileID: 1158689587}
+  - component: {fileID: 1158689593}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -10599,6 +10600,25 @@ MonoBehaviour:
   isGrounded: 0
   isAgainstRight: 0
   isAgainstLeft: 0
+--- !u!114 &1158689593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158689586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3686e46313c21147b0a0f12f93a820b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialHookTeather: {x: 0, y: 0}
+  distanceToTeather: 0
+  minPullDistance: 2
+  maxSpeed: 5
+  hookAccel: 15000
+  swinging: 0
+  pulling: 0
 --- !u!1 &1220761332
 GameObject:
   m_ObjectHideFlags: 0
