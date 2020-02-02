@@ -8,7 +8,7 @@ public class RopeSpawn : MonoBehaviour
 
     public GameObject parentObject;
 
-    public float partDistance = .5f;
+    //public float partDistance = .5f;
 
     public bool reset, spawn, spawnPart, spawnCoroutine, stopCoroutines, retract;
 
@@ -40,7 +40,7 @@ public class RopeSpawn : MonoBehaviour
 
         if(spawnPart)
         {
-            SpawnPart();
+            SpawnPartStartToWeight();
 
             spawnPart = false;
         }
@@ -67,14 +67,16 @@ public class RopeSpawn : MonoBehaviour
 
             retract = false;
         }
-        
-        
+
+
         ALLOWEDDISTANCE_COUNT = (currentCount * allowedDistancePerPart);
         PIVOT_TO_CRYSTAL = (parentObject.transform.position - weightGO.transform.position).magnitude;
-        if (ALLOWEDDISTANCE_COUNT < PIVOT_TO_CRYSTAL)
+        while (ALLOWEDDISTANCE_COUNT < PIVOT_TO_CRYSTAL)
         {
             Debug.Log("MORE");
-            SpawnPart();
+            SpawnPartWeightToStart();
+            ALLOWEDDISTANCE_COUNT = (currentCount * allowedDistancePerPart);
+            PIVOT_TO_CRYSTAL = (parentObject.transform.position - weightGO.transform.position).magnitude;
         }
         
         
@@ -86,31 +88,32 @@ public class RopeSpawn : MonoBehaviour
         int count = 10;
         for(int i = 0; i < count; i++)
         {
-            SpawnPart();
+            SpawnPartStartToWeight();
         }
     }
 
-    public void SpawnPart()
+    public void SpawnPartStartToWeight()
     {
         GameObject tmp;
         tmp = Instantiate(partPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, parentObject.transform);
         if (currentCount == 0)
         {
-            weightGO.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+            weightGO.GetComponentInChildren<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
         }
         else
         {
             //tmp = Instantiate(partPrefab, new Vector3(lastPart.transform.position.x + (Mathf.Sin(lastPart.transform.eulerAngles.z - 90) * partDistance), lastPart.transform.position.y + (Mathf.Cos(lastPart.transform.eulerAngles.z - 90) * partDistance), lastPart.transform.position.z), Quaternion.identity, parentObject.transform);
 
-            tmp.transform.eulerAngles = new Vector3(0, 0, lastPart.transform.eulerAngles.z);
+            //tmp.transform.eulerAngles = new Vector3(0, 0, lastPart.transform.eulerAngles.z);
         }
-
+        tmp.GetComponent<HingeJoint2D>().anchor = new Vector2(0, 0);
+        tmp.GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, 0);
         tmp.GetComponent<HingeJoint2D>().connectedBody = parentObject.GetComponent<Rigidbody2D>();
         //lastPart.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
         
         if (currentCount == 0)
         {
-            weightGO.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+            weightGO.GetComponentInChildren<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
             //tmp.GetComponent<HingeJoint2D>().connectedBody = parentObject.GetComponent<Rigidbody2D>();
 
         }
@@ -118,6 +121,9 @@ public class RopeSpawn : MonoBehaviour
         else
         {
             lastPart.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+
+            lastPart.GetComponent<HingeJoint2D>().anchor = new Vector2(0, .5f);
+            lastPart.GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, 0);
         }
         
 
@@ -132,7 +138,54 @@ public class RopeSpawn : MonoBehaviour
 
         //weightGO.GetComponent<HingeJoint2D>().connectedBody = lastPart.GetComponent<Rigidbody2D>();
     }
+    public void SpawnPartWeightToStart()
+    {
+        GameObject tmp;
+        if (currentCount == 0)
+        {
+            tmp = Instantiate(partPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, parentObject.transform);
 
+            tmp.GetComponent<HingeJoint2D>().connectedBody = parentObject.GetComponent<Rigidbody2D>();
+            tmp.GetComponent<HingeJoint2D>().anchor = new Vector2(0, 0);
+            tmp.GetComponent<HingeJoint2D>().connectedAnchor = new Vector2(0, 0);
+        }
+        else
+        {
+            tmp = Instantiate(partPrefab, new Vector3(lastPart.transform.position.x, lastPart.transform.position.y, lastPart.transform.position.z), Quaternion.identity, parentObject.transform);
+
+            tmp.GetComponent<HingeJoint2D>().connectedBody = lastPart.GetComponent<Rigidbody2D>();
+            tmp.transform.eulerAngles = new Vector3(0, 0, lastPart.transform.eulerAngles.z);
+        }
+        weightGO.GetComponentInChildren<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+
+        //lastPart.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+
+        /*
+        if (currentCount == 0)
+        {
+            weightGO.GetComponentInChildren<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+            //tmp.GetComponent<HingeJoint2D>().connectedBody = parentObject.GetComponent<Rigidbody2D>();
+
+        }
+
+        else
+        {
+            lastPart.GetComponent<HingeJoint2D>().connectedBody = tmp.GetComponent<Rigidbody2D>();
+        }
+        */
+
+
+        lastPart = tmp;
+        //weightGO.transform.position = new Vector3(lastPart.transform.position.x + (Mathf.Sin(lastPart.transform.eulerAngles.z - 90) * partDistance), lastPart.transform.position.y + (Mathf.Cos(lastPart.transform.eulerAngles.z - 90) * partDistance), lastPart.transform.position.z);
+
+        tmp.name = parentObject.transform.childCount.ToString();
+
+
+
+        currentCount++;
+
+        //weightGO.GetComponent<HingeJoint2D>().connectedBody = lastPart.GetComponent<Rigidbody2D>();
+    }
 
     public void Reset()
     {
@@ -147,7 +200,7 @@ public class RopeSpawn : MonoBehaviour
     {
         for(int i = 0; i < 100; i++)
         {
-            SpawnPart();
+            SpawnPartStartToWeight();
             yield return new WaitForSeconds(interval);
         }
     }
