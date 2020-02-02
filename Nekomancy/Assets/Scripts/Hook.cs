@@ -86,28 +86,11 @@ public class Hook : MonoBehaviour
             }
         }
 
-        //TEMP use mouse to teather anywhere
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Projectile.CreateProjectile2D<BoxCollider2D>(this.gameObject, this.transform.position, 20*(Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position));
-        }
+        
 
     }
 
-    public void TeatherToHitPoint()
-    {
-        if (swinging)
-        {
-            Clear();
-        }
-
-        //TEMP teather at the mouse position
-        Teather(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        swinging = true;
-
-    }
-
-    void Teather(Vector2 location)
+    public void Teather(Vector2 location)
     {
         //before teathering check to see if a previous teather point is close to the new teather point
         if (tPoints.Count > 1)

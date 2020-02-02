@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
             b.size = Collider2DScale;
         }
         Projectile.transform.position = StartPos;
-        spr.sortingOrder = 1;
+        spr.sortingOrder = 3;
         Projectile.layer = 12;
         spr.sprite = sprite;
         proj.LaunchVelocity = LaunchVector;
