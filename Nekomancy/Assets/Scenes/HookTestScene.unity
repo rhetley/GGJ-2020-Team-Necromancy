@@ -5265,6 +5265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToTeather: 0
   minPullDistance: 2
+  maxSpeed: 5
+  hookAccel: 15000
   swinging: 0
   pulling: 0
 --- !u!1 &1766508437
