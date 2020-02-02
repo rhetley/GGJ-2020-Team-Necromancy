@@ -98,7 +98,7 @@ public class Throwing : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log("FIRE         Charge:" + currentCharge);
+        //Debug.Log("FIRE         Charge:" + currentCharge);
 
         Vector2 finalMousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 difference = finalMousePosition - intialMousePosition;
