@@ -120,6 +120,127 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &202365639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202365640}
+  - component: {fileID: 202365645}
+  - component: {fileID: 202365644}
+  - component: {fileID: 202365643}
+  - component: {fileID: 202365642}
+  - component: {fileID: 202365641}
+  m_Layer: 0
+  m_Name: BackgroundMusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &202365640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -66.26252, y: -1.1078315, z: -38.655396}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1158689590}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &202365641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FromX: 45
+  ToX: 60
+  SoundId: 10
+  FadeInSeconds: 0.5
+  FadeOutSeconds: 2
+--- !u!114 &202365642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FromX: 30
+  ToX: 45
+  SoundId: 9
+  FadeInSeconds: 0.5
+  FadeOutSeconds: 2
+--- !u!114 &202365643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FromX: 15
+  ToX: 30
+  SoundId: 1
+  FadeInSeconds: 0.5
+  FadeOutSeconds: 2
+--- !u!114 &202365644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FromX: -5
+  ToX: 15
+  SoundId: 5
+  FadeInSeconds: 0.5
+  FadeOutSeconds: 2
+--- !u!114 &202365645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202365639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f5df439d972fd45a89bff64e06e2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundController: {fileID: 1065317981}
+  soundAreas:
+  - {fileID: 202365643}
+  - {fileID: 202365644}
+  - {fileID: 202365641}
+  - {fileID: 202365642}
 --- !u!1 &215105792
 GameObject:
   m_ObjectHideFlags: 0
@@ -11782,10 +11903,6 @@ GameObject:
   - component: {fileID: 1158689592}
   - component: {fileID: 1158689587}
   - component: {fileID: 1158689593}
-  - component: {fileID: 1158689596}
-  - component: {fileID: 1158689597}
-  - component: {fileID: 1158689595}
-  - component: {fileID: 1158689594}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Untagged
@@ -11886,7 +12003,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2, y: 4.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 202365640}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11947,74 +12065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundController: {fileID: 1065317981}
---- !u!114 &1158689594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158689586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FromX: -5
-  ToX: 15
-  SoundId: 5
-  FadeInSeconds: 0.5
-  FadeOutSeconds: 2
---- !u!114 &1158689595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158689586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FromX: 15
-  ToX: 30
-  SoundId: 1
-  FadeInSeconds: 0.5
-  FadeOutSeconds: 2
---- !u!114 &1158689596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158689586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f5df439d972fd45a89bff64e06e2d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundController: {fileID: 1065317981}
-  soundAreas:
-  - {fileID: 1158689594}
-  - {fileID: 1158689595}
-  - {fileID: 1158689597}
---- !u!114 &1158689597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158689586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6320533f4fc8b7644a305c2437ad00b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FromX: 30
-  ToX: 45
-  SoundId: 9
-  FadeInSeconds: 0.5
-  FadeOutSeconds: 2
 --- !u!1 &1220761332
 GameObject:
   m_ObjectHideFlags: 0

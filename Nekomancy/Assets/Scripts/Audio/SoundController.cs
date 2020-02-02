@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public enum SoundId
 {
@@ -24,32 +27,35 @@ public enum SoundId
 
 public class SoundController : MonoBehaviour
 {
+    [Header("Sound Map")]
+    [SerializeField()] private AudioSource NoSound;
+    [SerializeField()] private AudioSource AdventureLoop;
+    [SerializeField()] private AudioSource CatMusic;
+    [SerializeField()] private AudioSource CatStrike;
+    [SerializeField()] private AudioSource FishingStrike;
+    [SerializeField()] private AudioSource HowlingWind;
+    [SerializeField()] private AudioSource JumpDown;
+    [SerializeField()] private AudioSource JumpUp;
+    [SerializeField()] private AudioSource NekomancerBoth;
+    [SerializeField()] private AudioSource NekomancerClarinet;
+    [SerializeField()] private AudioSource NekomancerViolin;
+    [SerializeField()] private AudioSource PickUpBone;
+    [SerializeField()] private AudioSource RavenMusic;
+    [SerializeField()] private AudioSource RavenStrike;
+    [SerializeField()] private AudioSource WalkLeft;
+    [SerializeField()] private AudioSource WalkRight;
 
-    public bool ThrowExceptionWhenSoundNotFound = true;
-
-    public AudioSource NoSound;
-    public AudioSource AdventureLoop;
-    public AudioSource CatMusic;
-    public AudioSource CatStrike;
-    public AudioSource FishingStrike;
-    public AudioSource HowlingWind;
-    public AudioSource JumpDown;
-    public AudioSource JumpUp;
-    public AudioSource NekomancerBoth;
-    public AudioSource NekomancerClarinet;
-    public AudioSource NekomancerViolin;
-    public AudioSource PickUpBone;
-    public AudioSource RavenMusic;
-    public AudioSource RavenStrike;
-    public AudioSource WalkLeft;
-    public AudioSource WalkRight;
+    [Header("Behaviors")]
+    [Tooltip("Throw Exception When Sound Not Found")]
+    [SerializeField()] private bool ThrowExceptionWhenSoundNotFound = true;
 
 
     private Dictionary<SoundId, AudioSource> audioSourceFromSoundId;
+    private Dictionary<SoundId, float> volumeSettingBySoundId;
 
     void Awake()
     {
-        audioSourceFromSoundId = new Dictionary<SoundId, AudioSource>() 
+        audioSourceFromSoundId = new Dictionary<SoundId, AudioSource>()
         {
             { SoundId.AdventureLoop, AdventureLoop },
             { SoundId.CatMusic, CatMusic },
@@ -67,22 +73,31 @@ public class SoundController : MonoBehaviour
             { SoundId.WalkLeft, WalkLeft },
             { SoundId.WalkRight, WalkRight},
         };
+
+        volumeSettingBySoundId = new Dictionary<SoundId, float>();
+        foreach(SoundId id in audioSourceFromSoundId.Keys)
+        {
+            if (audioSourceFromSoundId[id] != null)
+            {
+                volumeSettingBySoundId[id] = audioSourceFromSoundId[id].volume;
+            }
+        }
     }
 
-    private AudioSource getAudioSource(SoundId soundId)
+    private AudioSource getAudioSource(SoundId id)
     {
-        if (audioSourceFromSoundId.ContainsKey(soundId))
+        if (audioSourceFromSoundId.ContainsKey(id))
         {
-            return audioSourceFromSoundId[soundId];
+            return audioSourceFromSoundId[id];
         }
 
         if (ThrowExceptionWhenSoundNotFound)
         {
-            throw new System.Exception($"Sound Id {soundId} is not known");
+            throw new System.Exception($"Sound Id {id} is not known");
         }
         else
         {
-            Debug.LogError($"Sound Id {soundId} is not known");
+            Debug.LogError($"Sound Id {id} is not known");
             return NoSound;
         }
     }
@@ -96,27 +111,15 @@ public class SoundController : MonoBehaviour
     public void Play(SoundId soundId, bool restart = false)
     {
         AudioSource audioSource = getAudioSource(soundId);
-        if(audioSource.isPlaying && restart)
+        if (audioSource.isPlaying && restart)
         {
             audioSource.Stop();
         }
 
-        if(!audioSource.isPlaying)
+        if (!audioSource.isPlaying)
         {
             audioSource.Play();
         }
-    }
-
-    public void PlayAfter(SoundId soundId, TimeSpan delay)
-    {
-        AudioSource audioSource = getAudioSource(soundId);
-
-        new System.Threading.Timer((id) =>
-        {
-            SoundId sid = (SoundId)id;
-            Play(sid, false);
-        },
-        audioSource, delay, TimeSpan.Zero);
     }
 
     public void Stop(SoundId soundId)
@@ -136,6 +139,7 @@ public class SoundController : MonoBehaviour
     {
         AudioSource audioSource = getAudioSource(soundId);
         audioSource.volume = newVolume;
+        volumeSettingBySoundId[soundId] = newVolume;
     }
 
     public void SetLoop(SoundId soundId, bool loop)
@@ -193,4 +197,52 @@ public class SoundController : MonoBehaviour
         AudioSource audioSource = getAudioSource(soundId);
         audioSource.spatialBlend = spatialBlend;
     }
+
+    public void FadeIn(SoundId soundId, float fadeTime)
+    {
+        if (!IsPlaying(soundId))
+        {
+            Coroutine c = StartCoroutine(fadeInCoroutine(soundId, volumeSettingBySoundId[soundId], fadeTime));
+        }
+    }
+
+    public void FadeOut(SoundId soundId, float fadeTime)
+    {
+        if (IsPlaying(soundId))
+        {
+            Coroutine c = StartCoroutine(fadeOutCoroutine(Guid.NewGuid(), soundId, volumeSettingBySoundId[soundId], fadeTime));
+        }
+    }
+
+    public IEnumerator fadeOutCoroutine(Guid coroutineKey, SoundId soundId, float normalVolume, float FadeTime)
+    {
+        AudioSource audioSource = getAudioSource(soundId);
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= normalVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = normalVolume;
+    }
+
+    public IEnumerator fadeInCoroutine(SoundId soundId, float normalVolume, float FadeTime)
+    {
+        AudioSource audioSource = getAudioSource(soundId);
+
+        audioSource.volume = 0;
+        audioSource.Play();
+
+        while (audioSource.volume < normalVolume)
+        {
+            audioSource.volume += normalVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.volume = normalVolume;
+    }
+
 }

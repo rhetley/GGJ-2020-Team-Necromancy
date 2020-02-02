@@ -15,8 +15,6 @@ public class PlaySoundWhileInRegion : MonoBehaviour
     {
         GameObject SoundManager = GameObject.Find(SoundManagerName);
         soundController = SoundManager.GetComponent<SoundController>();
-
-        GameObject = GetComponent<GameObject>();
     }
 
     private void OnTriggerEnter(Collider other)
