@@ -15,6 +15,7 @@ public class Throwing : MonoBehaviour
 
     [Header("Charge")]
     public float chargeRate = .3f;
+    public float chargeMin = .5f;
     public float chargeMax = 1f;
     [SerializeField]
     private float currentCharge;
@@ -29,9 +30,9 @@ public class Throwing : MonoBehaviour
         }
         set
         {
-            if(value < 0)
+            if(value < chargeMin)
             {
-                currentCharge = 0;
+                currentCharge = chargeMin;
             }
             else if(value > chargeMax)
             {
