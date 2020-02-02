@@ -432,12 +432,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5574223323772046277, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574223323772046277, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574223323772046277, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 1419828624}
+    - target: {fileID: 5574223323772046277, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_AutoConfigureConnectedAnchor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6263682198206196493, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
       propertyPath: m_Name
       value: Crystal
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6554129654532879161, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554129654532879161, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 1419828624}
+    - target: {fileID: 6888810596921980808, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888810596921980808, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249168151032063493, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_LinearOffset.x
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249168151032063493, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_LinearOffset.y
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249168151032063493, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 1419828624}
+    - target: {fileID: 9006614451934533406, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7249168151032063493, guid: 50cefbf6cd2d2874c8cffc4164fe67b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 50cefbf6cd2d2874c8cffc4164fe67b9, type: 3}
 --- !u!1 &1286325559
 GameObject:
@@ -569,7 +630,6 @@ MonoBehaviour:
   partPrefab: {fileID: 1881170948578194962, guid: 083a7566a1bcf654eaee4d2b07f6f978,
     type: 3}
   parentObject: {fileID: 1334608063}
-  partDistance: 0.3
   reset: 0
   spawn: 0
   spawnPart: 0
@@ -579,7 +639,7 @@ MonoBehaviour:
   lastPart: {fileID: 0}
   weightGO: {fileID: 1426679182}
   currentCount: 0
-  allowedDistancePerPart: 0.4
+  allowedDistancePerPart: 0.09
   PIVOT_TO_CRYSTAL: 0
   ALLOWEDDISTANCE_COUNT: 0
 --- !u!50 &1334608066
@@ -762,6 +822,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3686e46313c21147b0a0f12f93a820b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToTeather: 0
+  minPullDistance: 0
+  maxSpeed: 0
+  hookAccel: 0
+  swinging: 0
+  pulling: 0
 --- !u!114 &1419828626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +848,7 @@ MonoBehaviour:
   chargeMax: 2
   currentCharge: 0
   firingAngle: {x: 0, y: 0, z: 0}
-  firingPower: 20000
+  firingPower: 50000
   throwingState: 0
 --- !u!1 &1426679182 stripped
 GameObject:
