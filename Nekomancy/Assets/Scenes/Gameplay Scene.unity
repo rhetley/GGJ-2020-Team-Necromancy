@@ -42726,6 +42726,7 @@ GameObject:
   - component: {fileID: 1158689593}
   - component: {fileID: 1158689589}
   - component: {fileID: 1158689594}
+  - component: {fileID: 1158689595}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -42787,6 +42788,8 @@ MonoBehaviour:
   currentCharge: 0
   crystalCollision: {fileID: 1080573385}
   intialMousePosition: {x: 0, y: 0}
+  followCrystal: {fileID: 1158689595}
+  playerWalkJump: {fileID: 1158689587}
   firingAngle: {x: 0, y: 0, z: 0}
   firingPower: 7000
   throwingState: 0
@@ -42860,7 +42863,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158689586}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3686e46313c21147b0a0f12f93a820b, type: 3}
   m_Name: 
@@ -42885,6 +42888,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundController: {fileID: 1065317981}
+--- !u!114 &1158689595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158689586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf479d81b84c8f4a9809f8c2b28026b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crystalGO: {fileID: 1080573380}
+  state: 0
+  playerGO: {fileID: 1158689586}
+  playerWalkJump: {fileID: 1158689587}
+  prevPosition: {x: 0, y: 0}
+  nextPosition: {x: 0, y: 0}
+  percent: -1
+  rigidbody: {fileID: 0}
 --- !u!1001 &1161818406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43386,6 +43409,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2461937189064869215, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
       propertyPath: m_SortingOrder
@@ -43402,6 +43430,11 @@ PrefabInstance:
       propertyPath: refHook
       value: 
       objectReference: {fileID: 1158689593}
+    - target: {fileID: 2764224211922792212, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: followCrystal
+      value: 
+      objectReference: {fileID: 1158689595}
     - target: {fileID: 4237048943084029862, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
       propertyPath: m_LocalPosition.x

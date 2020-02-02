@@ -25,6 +25,7 @@ public class Throwing : MonoBehaviour
     [Header("mouse")]
     public Vector2 intialMousePosition;
     public FollowCrystal followCrystal;
+    public PlayerWalkJump playerWalkJump;
 
     public float CurrentCharge
     {
@@ -114,6 +115,7 @@ public class Throwing : MonoBehaviour
         //CurrentCharge = -1f;
         throwingState = ThrowingState.idle;
         crystalCollision.enabled = true;
+        playerWalkJump.enabled = false;
 
 
     }
