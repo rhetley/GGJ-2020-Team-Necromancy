@@ -19288,7 +19288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459188487}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.17, y: 0, z: 0}
+  m_LocalPosition: {x: 4.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24186,6 +24186,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.055198144
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.2830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.033374865
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.6509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.623309
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.623309
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2388716892451797097, guid: e6ef075e14c93e04c94aea2b41813126,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ef075e14c93e04c94aea2b41813126, type: 3}
