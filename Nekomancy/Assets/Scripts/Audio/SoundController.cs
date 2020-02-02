@@ -14,7 +14,7 @@ public enum SoundId
     FishingStrike,
     HowlingWind,
     JumpUp,
-    JumpDown,
+    QuietWind,
     NekomancerBoth,
     NekomancerClarinet,
     NekomancerViolin,
@@ -34,7 +34,7 @@ public class SoundController : MonoBehaviour
     [SerializeField()] private AudioSource CatStrike;
     [SerializeField()] private AudioSource FishingStrike;
     [SerializeField()] private AudioSource HowlingWind;
-    [SerializeField()] private AudioSource JumpDown;
+    [SerializeField()] private AudioSource QuietWind;
     [SerializeField()] private AudioSource JumpUp;
     [SerializeField()] private AudioSource NekomancerBoth;
     [SerializeField()] private AudioSource NekomancerClarinet;
@@ -62,7 +62,7 @@ public class SoundController : MonoBehaviour
             { SoundId.CatStrike, CatStrike },
             { SoundId.FishingStrike, FishingStrike },
             { SoundId.HowlingWind, HowlingWind },
-            { SoundId.JumpDown, JumpDown },
+            { SoundId.QuietWind, QuietWind },
             { SoundId.JumpUp, JumpUp },
             { SoundId.NekomancerBoth, NekomancerBoth },
             { SoundId.NekomancerClarinet, NekomancerClarinet },
@@ -74,7 +74,12 @@ public class SoundController : MonoBehaviour
             { SoundId.WalkRight, WalkRight},
         };
 
-        volumeSettingBySoundId = new Dictionary<SoundId, float>();
+        foreach (SoundId id in audioSourceFromSoundId.Keys)
+        {
+            audioSourceFromSoundId[id].playOnAwake = false;
+        }
+
+            volumeSettingBySoundId = new Dictionary<SoundId, float>();
         foreach(SoundId id in audioSourceFromSoundId.Keys)
         {
             if (audioSourceFromSoundId[id] != null)
