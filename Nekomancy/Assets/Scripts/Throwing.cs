@@ -11,7 +11,7 @@ public class Throwing : MonoBehaviour
     }
     public GameObject playerGO;
     public GameObject crystalGO;
-    public RopeSpawn ropeSpawn;
+    //public RopeSpawn ropeSpawn;
 
     [Header("Charge")]
     public bool chargeUp = true;
@@ -63,7 +63,8 @@ public class Throwing : MonoBehaviour
     {
         if(throwingState == ThrowingState.idle && Input.GetMouseButtonDown(1))
         {
-            ropeSpawn.Reset();
+            crystalGO.SetActive(false);
+            //ropeSpawn.Reset();
         }
         else if (throwingState == ThrowingState.idle && Input.GetMouseButtonDown(0))
         {
@@ -96,6 +97,8 @@ public class Throwing : MonoBehaviour
     {
         Debug.Log("FIRE         Charge:" + currentCharge);
 
+        crystalGO.transform.position = playerGO.transform.position;
+        crystalGO.SetActive(true);
         crystalGO.GetComponent<Rigidbody2D>().AddForce(new Vector2(firingAngle.x * firingPower, firingAngle.y * firingPower) * CurrentCharge);
 
         CurrentCharge = -1f;
