@@ -15,7 +15,7 @@ public class Smoke : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
     private void LateUpdate()
     {
@@ -23,9 +23,9 @@ public class Smoke : MonoBehaviour
 
         int numParticles = smokeSystem.GetParticles(smokeParticles);
 
-        for(int  i = 0; i < numParticles; i++)
+        for (int i = 0; i < numParticles; i++)
         {
-            smokeParticles[i].velocity = new Vector3(smokeParticles[i].remainingLifetime * WindVelocity.x * Mathf.Sin(Time.time + 5*this.transform.position.x), 0 , smokeParticles[i].remainingLifetime * WindVelocity.z);
+            smokeParticles[i].velocity = new Vector3(smokeParticles[i].remainingLifetime * WindVelocity.x * Mathf.Sin(Time.time + 5 * this.transform.position.x), 0, smokeParticles[i].remainingLifetime * WindVelocity.z);
         }
 
         smokeSystem.SetParticles(smokeParticles, numParticles);

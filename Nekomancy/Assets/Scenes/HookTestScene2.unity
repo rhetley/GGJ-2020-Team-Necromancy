@@ -817,15 +817,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419828618}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3686e46313c21147b0a0f12f93a820b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialHookTeather: {x: 0, y: 0}
   distanceToTeather: 0
-  minPullDistance: 0
-  maxSpeed: 0
-  hookAccel: 0
+  minPullDistance: 2
+  maxSpeed: 5
+  hookAccel: 15000
   swinging: 0
   pulling: 0
 --- !u!114 &1419828626
@@ -856,6 +857,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 949835086}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1426679183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426679182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51ca9ea948dc5a458619fc8b7777d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitevent:
+    m_PersistentCalls:
+      m_Calls: []
+  refHook: {fileID: 1419828625}
 --- !u!1 &1569819999
 GameObject:
   m_ObjectHideFlags: 0
