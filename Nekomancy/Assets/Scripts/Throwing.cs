@@ -24,6 +24,7 @@ public class Throwing : MonoBehaviour
 
     [Header("mouse")]
     public Vector2 intialMousePosition;
+    public FollowCrystal followCrystal;
 
     public float CurrentCharge
     {
@@ -107,6 +108,8 @@ public class Throwing : MonoBehaviour
         crystalGO.transform.position = playerGO.transform.position;
         crystalGO.SetActive(true);
         crystalGO.GetComponent<Rigidbody2D>().AddForce(new Vector2(differenceNormalized.x * firingPower, differenceNormalized.y * firingPower) * CurrentCharge);
+
+        followCrystal.state = FollowCrystal.FollowCrystalState.saving;
 
         //CurrentCharge = -1f;
         throwingState = ThrowingState.idle;
