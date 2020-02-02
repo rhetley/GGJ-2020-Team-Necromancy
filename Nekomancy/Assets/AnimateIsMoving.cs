@@ -6,7 +6,7 @@ public class AnimateIsMoving : MonoBehaviour
 {
     private Rigidbody2D parentBody;
     private Animator animator;
-    private bool prevState = false;
+    private bool prevState = true;
     private int IsMovingHash;
     private SpriteRenderer sprite;
 
@@ -41,11 +41,11 @@ public class AnimateIsMoving : MonoBehaviour
 
         if (parentBody.velocity.x > 0.1f)
         {
-            sprite.flipX = false;
+            sprite.flipX = true;
         }
         else if (parentBody.velocity.x < -0.1f)
         {
-            sprite.flipX = true;
+            sprite.flipX = false;
         }
     }
 }
