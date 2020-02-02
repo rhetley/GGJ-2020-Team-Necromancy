@@ -9,7 +9,7 @@ public class FoVByVel : MonoBehaviour
     public Rigidbody2D CharacterWithVelocity;
     private float percent;
     public float MinFOV;
-    public float MaxFOX;
+    public float MaxFOV;
     
     
     // Start is called before the first frame update
@@ -22,9 +22,9 @@ public class FoVByVel : MonoBehaviour
     void Update()
     {
 
-        percent += Mathf.Min(Time.deltaTime * (-1f + Mathf.Abs(CharacterWithVelocity.velocity.x)/2), 0.5f);
-        percent = Mathf.Clamp(percent, 0, 1) * .9f;
+        percent += Mathf.Min(Time.deltaTime * (-1f + Mathf.Abs(CharacterWithVelocity.velocity.x)/2.8f), 0.5f);
+        percent = Mathf.Clamp(percent, 0, 1) * .93f;
         
-        camera.m_Lens.FieldOfView = Mathf.Lerp(MinFOV, MaxFOX, percent);
+        camera.m_Lens.FieldOfView = Mathf.Lerp(MinFOV, MaxFOV, percent);
     }
 }

@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
+    //The Hit Position of the Projectile logged to the hook
+    public Vector2 InitialHookTeather;
+
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
@@ -76,31 +79,19 @@ public class Hook : MonoBehaviour
             if (tPointPerps.Count != 0)
             {
                 Debug.DrawLine(tPointPerps.Peek(), tPoints.Peek());
-                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0)
+                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0 || toTeather.sqrMagnitude < .25f)
                 {
                     Unteather();
                 }
             }
         }
-
-        //TEMP use mouse to teather anywhere
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (swinging)
-            {
-                swinging = false;
-                Clear();
-            }
-            else
-            {
-                //TEMP teather at the mouse position
-                Teather(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                swinging = true;
-            }
+            Clear();
         }
     }
 
-    void Teather(Vector2 location)
+    public void Teather(Vector2 location)
     {
         //before teathering check to see if a previous teather point is close to the new teather point
         if (tPoints.Count > 1)
@@ -118,7 +109,8 @@ public class Hook : MonoBehaviour
         //the ray reaches the player
         else
         {
-            //tPoints.Push(location);
+            swinging = true;
+            tPoints.Push(location);
             //List<Vector2> points = new List<Vector2>
             //{
             //    new Vector2(1.1f,1.1f),
@@ -167,12 +159,20 @@ public class Hook : MonoBehaviour
     {
         tPoints.Pop();
         distanceToTeather = (tPoints.Peek() - (Vector2)transform.position).magnitude;
-        tPointPerps.Pop();
+        if (tPointPerps.Count > 0)
+        {
+            tPointPerps.Pop();
+        }
+        if(tPoints.Count == 0)
+        {
+            swinging = false;
+        }
     }
 
-    void Clear()
+    public void Clear()
     {
         tPoints = new Stack<Vector2>();
         tPointPerps = new Stack<Vector2>();
+        swinging = false;
     }
 }
