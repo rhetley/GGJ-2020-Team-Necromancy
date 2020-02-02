@@ -85,6 +85,10 @@ public class Hook : MonoBehaviour
                 }
             }
         }
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Clear();
+        }
     }
 
     public void Teather(Vector2 location)
