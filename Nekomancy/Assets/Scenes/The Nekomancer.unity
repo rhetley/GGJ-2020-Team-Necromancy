@@ -17666,7 +17666,7 @@ MonoBehaviour:
   distanceToTeather: 0
   minPullDistance: 2
   maxSpeed: 5
-  hookAccel: 200000
+  hookAccel: 2000
   swinging: 0
   pulling: 0
 --- !u!114 &1158689594
@@ -18045,6 +18045,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2461937189064869215, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}

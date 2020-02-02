@@ -103,6 +103,7 @@ public class Throwing : MonoBehaviour
 
         Vector2 differenceNormalized = difference.normalized;
         CurrentCharge = difference.magnitude / 750f;// * 100000000000f;
+        crystalGO.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         crystalGO.transform.position = playerGO.transform.position;
         crystalGO.SetActive(true);
         crystalGO.GetComponent<Rigidbody2D>().AddForce(new Vector2(differenceNormalized.x * firingPower, differenceNormalized.y * firingPower) * CurrentCharge);

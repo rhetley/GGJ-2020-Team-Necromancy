@@ -13,6 +13,8 @@ public class OnCollisionStuff : MonoBehaviour
     {
         if (enabled)
         {
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             refHook.Clear();
             refHook.Teather(this.transform.position);
             enabled = false;

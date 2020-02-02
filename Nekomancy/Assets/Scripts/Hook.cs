@@ -50,7 +50,7 @@ public class Hook : MonoBehaviour
             Vector2 toTeather = tPoints.Peek() - (Vector2)transform.position;
 
             float speed = rb.velocity.magnitude;
-            rb.AddForce(hookAccel * Time.deltaTime * Time.deltaTime * toTeather);
+            rb.AddForce(hookAccel * Time.deltaTime * toTeather);
             //Vector2 teatherPerp = Vector2.Perpendicular(toTeather).normalized;
             ////Swing in circular motion by keeping velocity tangent to the teather
             //rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;
@@ -58,10 +58,10 @@ public class Hook : MonoBehaviour
 
             //if (pulling)
             //{
-            //    distanceToTeather = Mathf.Lerp(distanceToTeather, 0, Time.deltaTime);
-            //    if (tPoints.Count > 1 &&  minPullDistance > Vector2.Distance(tPoints.Peek(), (Vector2)transform.position))
+            //    distancetoteather = mathf.lerp(distancetoteather, 0, time.deltatime);
+            //    if (tpoints.count > 1 &&  minpulldistance > vector2.distance(tpoints.peek(), (vector2)transform.position))
             //    {
-            //        Unteather();
+            //        unteather();
             //    }
             //}
 
@@ -79,11 +79,17 @@ public class Hook : MonoBehaviour
             if (tPointPerps.Count != 0)
             {
                 Debug.DrawLine(tPointPerps.Peek(), tPoints.Peek());
-                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0 || toTeather.sqrMagnitude < .25f)
+                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0 || toTeather.sqrMagnitude < 5.25f)
                 {
                     Unteather();
                 }
             }
+            
+            if (toTeather.sqrMagnitude < 5.25f)
+            {
+                Unteather();
+            }
+            
         }
         if(Input.GetKeyDown(KeyCode.Mouse1))
         {
