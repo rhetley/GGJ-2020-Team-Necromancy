@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizInput: {x: 0, y: 0}
-  maxGroundAcceleration: 5000
+  maxGroundAcceleration: 1000
   maxGroundSpeed: 2
   jumpForce: 200
 --- !u!61 &1419828620
