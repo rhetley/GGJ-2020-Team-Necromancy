@@ -11,6 +11,8 @@ public class Hook : MonoBehaviour
 
     [SerializeField]
     private float distanceToTeather, minPullDistance;
+    [SerializeField]
+    private float maxSpeed, hookAccel;
 
     private Vector2 teatherBase;
     private Stack<Vector2> tPoints;
@@ -39,24 +41,26 @@ public class Hook : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 pulling = !pulling;
-
             }
 
             Debug.DrawLine(transform.position, tPoints.Peek());
             Vector2 toTeather = tPoints.Peek() - (Vector2)transform.position;
-            Vector2 teatherPerp = Vector2.Perpendicular(toTeather).normalized;
-            //Swing in circular motion by keeping velocity tangent to the teather
-            rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;
-            transform.position = tPoints.Peek() - toTeather.normalized * distanceToTeather;
 
-            if (pulling)
-            {
-                distanceToTeather = Mathf.Lerp(distanceToTeather, 0, Time.deltaTime);
-                if (tPoints.Count > 1 &&  minPullDistance > Vector2.Distance(tPoints.Peek(), new Vector2(transform.position.x, transform.position.y)) )
-                {
-                    Unteather();
-                }
-            }
+            float speed = rb.velocity.magnitude;
+            rb.AddForce(hookAccel * Time.deltaTime * Time.deltaTime * toTeather);
+            //Vector2 teatherPerp = Vector2.Perpendicular(toTeather).normalized;
+            ////Swing in circular motion by keeping velocity tangent to the teather
+            //rb.velocity = Vector2.Dot(teatherPerp, rb.velocity) * teatherPerp;
+            //transform.position = tPoints.Peek() - toTeather.normalized * distanceToTeather;
+
+            //if (pulling)
+            //{
+            //    distanceToTeather = Mathf.Lerp(distanceToTeather, 0, Time.deltaTime);
+            //    if (tPoints.Count > 1 &&  minPullDistance > Vector2.Distance(tPoints.Peek(), (Vector2)transform.position))
+            //    {
+            //        Unteather();
+            //    }
+            //}
 
 
             //Check for object wrapping
@@ -69,7 +73,7 @@ public class Hook : MonoBehaviour
             }
 
             //check for object unwrapping
-            if (tPointPerps.Count != 0 && !pulling)
+            if (tPointPerps.Count != 0)
             {
                 Debug.DrawLine(tPointPerps.Peek(), tPoints.Peek());
                 if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0)
