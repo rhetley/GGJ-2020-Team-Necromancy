@@ -32,7 +32,7 @@ public class UpdatedCatController : MonoBehaviour
         if (!inStopZone)
         {
             distanceVector = locationToSeek.transform.position - transform.position;
-            if (distanceVector.magnitude <= stopRadius)
+            if (distanceVector.magnitude <= stopRadius * 1.001)
             {
                 inStopZone = true;
                 StartCoroutine(Hover());
@@ -73,9 +73,18 @@ public class UpdatedCatController : MonoBehaviour
 
         while (true)
         {
-            catRigidbody.MovePosition(locationOnRadius + (Vector2.up * 0.15f * Mathf.Sin(hoverDeltaTime)) + (shakeVector * 0.1f * Mathf.Sin(hoverDeltaTime * 0.37f)));
+            if (distanceVector[0] > 0)
+            {
+                catSprite.flipX = false;
+            }
+            else if (distanceVector[0] < 0)
+            {
+                catSprite.flipX = true;
+            }
+            catRigidbody.MovePosition(locationOnRadius + (Vector2.up * 0.15f * Mathf.Sin(10*hoverDeltaTime)) + (shakeVector * 0.1f * Mathf.Sin(hoverDeltaTime * 0.37f)));
             yield return wait;
             hoverDeltaTime += Time.deltaTime;
+            Debug.Log("In coroutine");
         }
     }
 }
