@@ -79,15 +79,12 @@ public class Hook : MonoBehaviour
             if (tPointPerps.Count != 0)
             {
                 Debug.DrawLine(tPointPerps.Peek(), tPoints.Peek());
-                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0)
+                if (Vector2.Dot(toTeather, tPointPerps.Peek()) > 0 || toTeather.sqrMagnitude < .25f)
                 {
                     Unteather();
                 }
             }
         }
-
-        
-
     }
 
     public void Teather(Vector2 location)
@@ -108,7 +105,8 @@ public class Hook : MonoBehaviour
         //the ray reaches the player
         else
         {
-            //tPoints.Push(location);
+            swinging = true;
+            tPoints.Push(location);
             //List<Vector2> points = new List<Vector2>
             //{
             //    new Vector2(1.1f,1.1f),
@@ -157,12 +155,20 @@ public class Hook : MonoBehaviour
     {
         tPoints.Pop();
         distanceToTeather = (tPoints.Peek() - (Vector2)transform.position).magnitude;
-        tPointPerps.Pop();
+        if (tPointPerps.Count > 0)
+        {
+            tPointPerps.Pop();
+        }
+        if(tPoints.Count == 0)
+        {
+            swinging = false;
+        }
     }
 
-    void Clear()
+    public void Clear()
     {
         tPoints = new Stack<Vector2>();
         tPointPerps = new Stack<Vector2>();
+        swinging = false;
     }
 }

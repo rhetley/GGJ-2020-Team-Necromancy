@@ -68,17 +68,17 @@ public class RopeSpawn : MonoBehaviour
             retract = false;
         }
 
-
+        /*
         ALLOWEDDISTANCE_COUNT = (currentCount * allowedDistancePerPart);
         PIVOT_TO_CRYSTAL = (parentObject.transform.position - weightGO.transform.position).magnitude;
         while (ALLOWEDDISTANCE_COUNT < PIVOT_TO_CRYSTAL)
         {
-            Debug.Log("MORE");
+
             SpawnPartWeightToStart();
             ALLOWEDDISTANCE_COUNT = (currentCount * allowedDistancePerPart);
             PIVOT_TO_CRYSTAL = (parentObject.transform.position - weightGO.transform.position).magnitude;
         }
-        
+        */
         
     }
 

@@ -7,10 +7,15 @@ public class OnCollisionStuff : MonoBehaviour
 {
     [SerializeField]
     Hook refHook;
+    public bool enabled;
 
-    private void OnCollisionEnter2D(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("hi");
-        refHook.Teather(this.transform.position);
+        if (enabled)
+        {
+            refHook.Clear();
+            refHook.Teather(this.transform.position);
+            enabled = false;
+        }
     }
 }
