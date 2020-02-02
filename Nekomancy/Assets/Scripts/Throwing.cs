@@ -14,9 +14,8 @@ public class Throwing : MonoBehaviour
     //public RopeSpawn ropeSpawn;
 
     [Header("Charge")]
-    public bool chargeUp = true;
-    public float chargeRate = .5f;
-    public float chargeMax = 4f;
+    public float chargeRate = .3f;
+    public float chargeMax = 1f;
     [SerializeField]
     private float currentCharge;
     [SerializeField]
@@ -33,12 +32,10 @@ public class Throwing : MonoBehaviour
             if(value < 0)
             {
                 currentCharge = 0;
-                chargeUp = true;
             }
             else if(value > chargeMax)
             {
                 currentCharge = chargeMax;
-                chargeUp = false;
             }
             else
             {
@@ -61,7 +58,7 @@ public class Throwing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(throwingState == ThrowingState.idle && Input.GetMouseButtonDown(1))
+        if (throwingState == ThrowingState.idle && Input.GetMouseButtonDown(1))
         {
             crystalGO.SetActive(false);
             //ropeSpawn.Reset();
@@ -69,22 +66,11 @@ public class Throwing : MonoBehaviour
         else if (throwingState == ThrowingState.idle && Input.GetMouseButtonDown(0))
         {
             // Charging logic
-            firingAngle = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - playerGO.transform.position);
-            firingAngle.z = 0;
-            firingAngle = firingAngle.normalized;
-
             throwingState = ThrowingState.charging;
         }
         else if (throwingState == ThrowingState.charging)
         {
-            if(chargeUp)
-            {
-                CurrentCharge += chargeRate * Time.deltaTime;
-            }
-            else
-            {
-                CurrentCharge -= chargeRate * Time.deltaTime;
-            }
+            CurrentCharge += chargeRate * Time.deltaTime;
 
             if (Input.GetMouseButtonUp(0))
             {
@@ -96,6 +82,12 @@ public class Throwing : MonoBehaviour
     public void Fire()
     {
         Debug.Log("FIRE         Charge:" + currentCharge);
+
+        var stwp = (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)));
+        firingAngle = (stwp - playerGO.transform.position);
+        firingAngle.z = 0;
+        firingAngle = firingAngle.normalized;
+        firingAngle.x = firingAngle.x * 7;
 
         crystalGO.transform.position = playerGO.transform.position;
         crystalGO.SetActive(true);
