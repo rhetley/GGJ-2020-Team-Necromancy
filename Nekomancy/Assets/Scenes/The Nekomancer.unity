@@ -16098,13 +16098,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerGO: {fileID: 1158689586}
   crystalGO: {fileID: 1080573380}
-  chargeUp: 1
-  chargeRate: 0.5
-  chargeMax: 2
+  chargeRate: 0.3
+  chargeMax: 1
   currentCharge: 0
   crystalCollision: {fileID: 1080573385}
   firingAngle: {x: 0, y: 0, z: 0}
-  firingPower: 50000
+  firingPower: 7000
   throwingState: 0
 --- !u!4 &1158689590
 Transform:
@@ -16183,7 +16182,7 @@ MonoBehaviour:
   distanceToTeather: 0
   minPullDistance: 2
   maxSpeed: 5
-  hookAccel: 100000
+  hookAccel: 200000
   swinging: 0
   pulling: 0
 --- !u!1 &1212435018
@@ -16582,6 +16581,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7927506569667129314, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2461937189064869215, guid: 50cefbf6cd2d2874c8cffc4164fe67b9,
         type: 3}
       propertyPath: m_SortingOrder
