@@ -17551,11 +17551,13 @@ MonoBehaviour:
   playerGO: {fileID: 1158689586}
   crystalGO: {fileID: 1080573380}
   chargeRate: 0.3
+  chargeMin: 0.5
   chargeMax: 1
   currentCharge: 0
   crystalCollision: {fileID: 1080573385}
+  intialMousePosition: {x: 0, y: 0}
   firingAngle: {x: 0, y: 0, z: 0}
-  firingPower: 7000
+  firingPower: 10000
   throwingState: 0
 --- !u!4 &1158689590
 Transform:
